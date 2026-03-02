@@ -1,0 +1,3 @@
+ECB: cifra blocos independentemente; blocos iguais geram ciphertext igual -> padrões repetidos da imagem permanecem visíveis.
+
+CBC: cada bloco depende do bloco anterior + IV; elimina repetição → resultado visual aproxima-se de ruído, sem padrões.
