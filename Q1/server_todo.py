@@ -25,6 +25,13 @@ class TodoList:
 
     def count_items(self):
         return len(self.items)
+    
+    def count_imcomplete_items(self):
+        count = 0
+        for i, item in enumerate(self.items):
+            if item.completed:
+                count = count + 1
+        return str(count)
 
     def display_items(self):
         result = ""
@@ -36,7 +43,7 @@ class TodoList:
         return result
 
 host = 'localhost'
-port = # port number to listen on
+port = 8080
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.bind((host, port))
@@ -65,6 +72,8 @@ while True:
         index = int(data)
         todo_list.complete_item(index)
         result = "Todo completed."
+    elif choice == "4":
+        result = todo_list.count_imcomplete_items()
     else:
         result = "Invalid command."
     print("Logging: " + result)

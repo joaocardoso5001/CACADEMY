@@ -1,7 +1,7 @@
 import socket
 
 host = 'localhost' # assumes server is running locally
-port = # port number should be the same as the server
+port = 8080
 
 def send_command(command):
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -20,6 +20,7 @@ def menu():
         print("1. Add todo")
         print("2. Print todos")
         print("3. Complete todo")
+        print("4. Print number imcomplete todos")
         print("10. Exit")
         choice = input("Enter your choice: ")
         if choice == "1":
@@ -42,6 +43,13 @@ def menu():
             index = int(input("Enter index: "))
             #todo_list.complete_item(index)
             command = f"3-{index}"
+            result = send_command(command)
+            print(result)
+
+        elif choice == "4":
+            print("Print number icomplete todos")
+            #todo_list.complete_item(index)
+            command = f"4-"
             result = send_command(command)
             print(result)
 
